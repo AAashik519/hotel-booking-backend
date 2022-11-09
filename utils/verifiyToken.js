@@ -10,8 +10,29 @@ export const verifyToken = (req, res, next) => {
     }
   
     jwt.verify(token, process.env.JWT, (err, user) => {
-      if (err) return next(createError(403, "Token is not valid!"));
+      if (err) return next(creteError(403, "Token is not valid!"));
       req.user = user;
       next(err);
     });
   };
+
+
+  export const verifyUser= (req,res,next)=>{
+    verifyToken(req,res,next ,()=>{
+      if(req.user.id === req.params.id || req.user.isAdmin){
+        next()
+      }else{
+       if(err) return next(creteError(403, "You are not authorized!"));
+      }
+    })
+  } 
+
+  export const veriftAdmin= (req,res,next)=>{
+    verifyToken(req,res,next ,()=>{
+      if( req.user.isAdmin){
+        next()
+      }else{
+       if(err) return next(creteError(403, "You are not authorized!"));
+      }
+    })
+  } 
