@@ -1,12 +1,12 @@
 import express from 'express'
-import { deleteUser, getUser, getUsers, updateUser } from '../controllers/user'
-import { verifyToken } from '../utils/verifiyToken'
+import { deleteUser, getUser, getUsers, updateUser } from '../controllers/user.js'
+import { verifyToken } from '../utils/verifiyToken.js'
 const router = express.Router()
 
-router.get("/checkAuthentication", verifyToken ,(req,res,next)=>{
-    res.send("hello user ,you are  loggin")
+ 
+  router.get("/checkauthentication", verifyToken, (req,res,next)=>{
+   res.send("hello user, you are logged in")
 })
-
 //UPDATE
 router.put("/:id",updateUser)
 
