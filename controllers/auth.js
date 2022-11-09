@@ -40,6 +40,7 @@ export const  login = async(req,res,next)=>{
        })
        .status(200)
        .send({...otherDetails})
+       
       
     } catch (err) {
         next(err)
