@@ -9,6 +9,7 @@ export const createHotel= async (req,res,next)=>{
          next(err)
     }
 }
+
 export const updateHotel= async (req,res,next)=>{
     try {
         const UpdateHotel =  await Hotel.findByIdAndUpdate(req.params.id ,
